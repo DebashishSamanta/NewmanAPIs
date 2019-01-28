@@ -1,0 +1,7 @@
+[{
+	"client_id": "2h5zcrKapDjz5LF1lcQf0JKVo6D5OkRy9sFr7kOc",
+	"client_secret": "qCSEBvO89dYg5TMzSu9mITs2QUGr2gdBwGlnzClyRkFWVBUaD4",
+	"grant_type": "client_credentials",
+	"accept": "application/json",
+	"Content-Type": "application/x-www-form-urlencoded"
+}]

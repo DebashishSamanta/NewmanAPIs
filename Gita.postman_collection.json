@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "d5baf896-e72b-4fed-b9b9-8caed8224c4c",
+		"name": "Gita",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BhagvatGita Positive Scenario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa216292-b3fb-4280-845d-1eee400ff36a",
+						"exec": [
+							"var db = JSON.parse(responseBody);",
+							"pm.globals.set(\"access_token\", db.access_token);",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"token_type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "{{accept}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://bhagavadgita.io/auth/oauth/token?client_id={{client_id}}&client_secret={{client_secret}}&grant_type={{grant_type}}",
+					"protocol": "https",
+					"host": [
+						"bhagavadgita",
+						"io"
+					],
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "{{client_id}}"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}"
+						},
+						{
+							"key": "grant_type",
+							"value": "{{grant_type}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "BhagvatGita",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "{{accept}}",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://bhagavadgita.io/auth/oauth/token?client_id={{client_id}}&client_secret={{client_secret}}&grant_type={{grant_type}}",
+							"protocol": "https",
+							"host": [
+								"bhagavadgita",
+								"io"
+							],
+							"path": [
+								"auth",
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "{{client_id}}"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}"
+								},
+								{
+									"key": "grant_type",
+									"value": "{{grant_type}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 27 Jan 2019 12:36:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "49fb443d9af8ae81-KIX"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access_token\": \"vYTuTISWK9UncX69lpK11fBRjr7bUz\",\n    \"token_type\": \"Bearer\",\n    \"scope\": \"verse chapter\",\n    \"name\": \"Debashish\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GitaRequest with Missing Param",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa216292-b3fb-4280-845d-1eee400ff36a",
+						"exec": [
+							"var db = JSON.parse(responseBody);",
+							"pm.globals.set(\"access_token\", db.access_token);",
+							"",
+							"",
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"error\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "{{accept}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://bhagavadgita.io/auth/oauth/token?client_id={{client_id}}&grant_type={{grant_type}}",
+					"protocol": "https",
+					"host": [
+						"bhagavadgita",
+						"io"
+					],
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "{{client_id}}"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "{{grant_type}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing Header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa216292-b3fb-4280-845d-1eee400ff36a",
+						"exec": [
+							"var db = JSON.parse(responseBody);",
+							"pm.globals.set(\"access_token\", db.access_token);",
+							"",
+							"",
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"error\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "{{accept}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://bhagavadgita.io/auth/oauth/token?client_id={{client_id}}&grant_type={{grant_type}}",
+					"protocol": "https",
+					"host": [
+						"bhagavadgita",
+						"io"
+					],
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "{{client_id}}"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "{{grant_type}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
